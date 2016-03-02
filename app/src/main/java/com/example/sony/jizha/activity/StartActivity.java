@@ -46,6 +46,7 @@ public class StartActivity extends Activity {
         mWebView.setVerticalScrollBarEnabled(false);
         mWebView.setHorizontalScrollBarEnabled(false);
 
+
         //让webview只显示一列，也就是自适应页面大小 不能左右滑动（4.4以上无效）
         //mWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 
