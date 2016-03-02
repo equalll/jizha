@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--联系人显示布局-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_list_item"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <!--头像-->
+    <ImageView
+        android:id="@id/imageviewHead"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <!--姓名-->
+    <TextView
+        android:id="@id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/text_title"
+        android:textSize="16sp" />
+</LinearLayout>

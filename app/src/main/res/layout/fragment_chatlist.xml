@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--显示聊过天的好友列表-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="fill_parent"
+              android:background="@color/background_normal"
+              android:orientation="vertical">
+
+    <!--聊天列表显示-->
+    <ListView
+        android:id="@id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:divider="@null"
+        android:dividerHeight="0dp">
+    </ListView>
+
+</LinearLayout>

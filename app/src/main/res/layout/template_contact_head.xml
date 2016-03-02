@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--联系人列表顶部布局-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:orientation="vertical">
+
+    <!--新的好友-->
+    <RelativeLayout
+        android:id="@+id/layoutNewFriend"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_list_item"
+        android:gravity="center_vertical"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/imageviewNewFriend"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_addfriend_contact"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageviewNewFriend"
+            android:text="@string/friend_new"
+            android:textColor="@color/text_title"
+            android:textSize="16sp"/>
+
+        <!--数量显示-->
+        <TextView
+            android:id="@+id/txtBadge"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_badge"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <!--技术大牛-->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/selector_list_item"
+        android:gravity="center_vertical"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/imageviewFriendOfficial"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_addfriend_official"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageviewFriendOfficial"
+            android:text="@string/friend_daniu"
+            android:textColor="@color/text_title"
+            android:textSize="16sp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

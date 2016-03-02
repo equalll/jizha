@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--按下时与不按时图标不同-->
+    <item android:drawable="@drawable/icon_del_pressed" android:state_pressed="true" />
+    <item android:drawable="@drawable/icon_del_normal" />
+</selector>

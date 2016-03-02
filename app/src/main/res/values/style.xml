@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--自定义布局样式-->
+    <style name="layout">
+        <item name="android:padding">@dimen/basicPaddingSize</item>
+        <item name="android:background">@color/background_normal</item>
+    </style>
+
+    <!-- 自定义dialog样式-->
+    <style name="dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- 自定义editText样式-->
+    <style name="editText">
+        <item name="android:textSize">@dimen/normalTextSize</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textColorHint">@color/hint_color_white_bg</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/bg_edittext_selector</item>
+        <item name="android:paddingTop">@dimen/basicPaddingSize</item>
+        <item name="android:paddingBottom">@dimen/basicPaddingSize</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/inputEditTextMinHeight</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- 自定义大button样式-->
+    <style name="bigButton">
+        <item name="android:textSize">@dimen/ActionBarTextSize</item>
+        <item name="android:textColor">@color/white_color_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/largePadding</item>
+        <item name="android:paddingRight">@dimen/largePadding</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/normalButtonHeight</item>
+    </style>
+
+    <!-- 自定义小button样式-->
+    <style name="smallButton">
+        <item name="android:textSize">@dimen/hintTextSize</item>
+        <item name="android:textColor">@color/white_color_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/smallPadding</item>
+        <item name="android:paddingRight">@dimen/smallPadding</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">@dimen/smallButtonWidth</item>
+        <item name="android:minHeight">@dimen/smallButtonHeight</item>
+    </style>
+
+    <!-- 自定义绿色小button样式-->
+    <style name="smallGreenButton" parent="@style/smallButton">
+        <item name="android:background">@drawable/bg_btn_style_green</item>
+    </style>
+    <!-- 自定义小button不能按下时灰色样式-->
+    <style name="smallGreyButton" parent="@style/smallButton">
+        <item name="android:textColor">@color/grey_btn_text_color</item>
+        <item name="android:background">@drawable/bg_btn_style_grey</item>
+    </style>
+
+    <!-- 自定义红色小button样式-->
+    <style name="smallRedButton" parent="@style/smallButton">
+        <item name="android:background">@drawable/bg_btn_style_red</item>
+    </style>
+
+    <!-- 自定义绿色大button样式-->
+    <style name="bigGreenButton" parent="@style/bigButton">
+        <item name="android:background">@drawable/bg_btn_style_green</item>
+    </style>
+
+    <!-- 自定义红色大button样式-->
+    <style name="bigRedButton" parent="@style/bigButton">
+        <item name="android:background">@drawable/bg_btn_style_red</item>
+    </style>
+
+    <!-- 自定义大button不能按下时灰色样式-->
+    <style name="bigGreyButton" parent="@style/bigButton">
+        <item name="android:textColor">@color/grey_btn_text_color</item>
+        <item name="android:background">@drawable/bg_btn_style_grey</item>
+    </style>
+
+    <!--聊天时间样式-->
+    <style name="chatTime">
+        <item name="android:background">@drawable/gray_background</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!--好友搜索条目样式-->
+    <style name="prf_item">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@drawable/selector_list_item</item>
+    </style>
+
+    <!--好友搜索条目文本样式-->
+    <style name="prf_item_for_text">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/selector_list_item</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/text_title</item>
+    </style>
+
+    <!--好友搜索条目标题样式-->
+    <style name="text_title">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/text_title</item>
+    </style>
+
+</resources>

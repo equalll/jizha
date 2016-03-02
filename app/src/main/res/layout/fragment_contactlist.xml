@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--联系人界面fragment-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="fill_parent"
+              android:background="@color/background_normal"
+              android:orientation="vertical">
+    <!--进度条-->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <!--联系人显示列表-->
+        <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+            android:id="@+id/listViewContact"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dp"
+            android:divider="@color/listview_divider"
+            android:dividerHeight="1dp"></se.emilsjolander.stickylistheaders.StickyListHeadersListView>
+
+        <!--侧边栏-->
+        <com.example.sony.jizha.utils.SideBar
+            android:id="@+id/sideBar"
+            android:layout_width="30dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center"/>
+    </FrameLayout>
+</LinearLayout>

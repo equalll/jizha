@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--添加好友请求列表-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_list_item"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp">
+
+    <!--头像-->
+    <ImageView
+        android:id="@id/imageviewHead"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"/>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/imageviewHead">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--姓名-->
+            <TextView
+                android:id="@id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/text_title"
+                android:textSize="18sp"/>
+
+            <!--添加好友请求信息-->
+            <TextView
+                android:id="@id/txtMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:textColor="@color/text_normal"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <!--处理文本-->
+    <TextView
+        android:id="@+id/txtHandle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:singleLine="true"
+        android:textColor="@color/text_sub"
+        android:textSize="12sp"
+        android:visibility="gone"/>
+    <!--处理按钮-->
+    <Button
+        android:id="@+id/btnHandle"
+        style="@style/smallGreenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:text="@string/agree"
+        android:visibility="gone"/>
+
+</RelativeLayout>

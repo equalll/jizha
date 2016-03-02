@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--好友查询布局-->
+<LinearLayout
+    style="@style/layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!--文本框，输入账号-->
+        <EditText
+            android:id="@+id/etxtWord"
+            style="@style/editText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="输入菜鸟通行证查找"
+            android:imeActionLabel="@string/search"
+            android:imeOptions="actionSearch"/>
+        <!--搜索按钮-->
+        <Button
+            style="@style/smallGreenButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="4"
+            android:onClick="query"
+            android:text="@string/search"/>
+    </LinearLayout>
+
+
+    <!--通过通讯录查找-->
+    <TextView
+        style="@style/prf_item_for_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/icon_find_more_friend_mobile"
+        android:text="@string/friend_find_from_contact"/>
+
+    <!--通过QQ查找-->
+    <TextView
+        style="@style/prf_item_for_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:drawableLeft="@drawable/icon_find_more_friend_qq"
+        android:text="@string/friend_find_from_qq"/>
+
+    <!--扫描二维码添加-->
+    <TextView
+        style="@style/prf_item_for_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:drawableLeft="@drawable/icon_find_more_friend_scan"
+        android:text="@string/friend_find_from_scan"/>
+
+</LinearLayout>

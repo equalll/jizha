@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="imageviewHead" type="id">imageviewHead</item>
+    <item name="txtName" type="id">txtName</item>
+    <item name="txtEmail" type="id">txtEmail</item>
+    <item name="txtTime" type="id">txtTime</item>
+    <item name="btnMsgAt" type="id">btnMsgAt</item>
+    <item name="btnSend" type="id">btnSend</item>
+    <item name="etxtMsg" type="id">etxtMsg</item>
+    <item name="listView" type="id">listView</item>
+</resources>

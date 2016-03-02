@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--聊天列表显示-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/selector_list_item"
+              android:orientation="horizontal"
+              android:paddingBottom="2dp"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
+              android:paddingTop="2dp">
+
+
+    <RelativeLayout
+        android:layout_width="55dp"
+        android:layout_height="55dp">
+
+        <!--头像-->
+        <ImageView
+            android:id="@id/imageviewHead"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"/>
+        <!--消息数量-->
+        <TextView
+            android:id="@+id/txtBadge"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_badge"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--发送消息人的姓名-->
+            <TextView
+                android:id="@id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/text_title"
+                android:textSize="18sp"/>
+
+            <!--发送的消息-->
+            <TextView
+                android:id="@id/txtMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/text_normal"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <!--发送消息的时间-->
+        <TextView
+            android:id="@id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:singleLine="true"
+            android:textColor="@color/text_sub"
+            android:textSize="12dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

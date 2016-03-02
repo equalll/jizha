@@ -1,0 +1,59 @@
+<resources>
+
+    <style name="Theme.ActionBar" parent="Theme.AppCompat">
+        <item name="android:actionBarStyle">@style/actionbar.base.style</item>
+        <item name="android:actionBarTabStyle">@style/actionBarTabStyle</item>
+        <item name="android:actionBarTabTextStyle">@style/actionBarTabTextStyle</item>
+        <!--Support2.1及以上-->
+        <item name="actionBarStyle">@style/actionbar.base.style</item>
+        <item name="actionBarTabStyle">@style/actionBarTabStyle</item>
+        <item name="actionBarTabTextStyle">@style/actionBarTabTextStyle</item>
+
+
+        <!-- 设置activity切换动画 -->
+        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
+
+    </style>
+
+    <!-- animation 样式 -->
+    <style name="activityAnimation" parent="@android:style/Animation.Activity">
+
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+
+
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
+
+    <!-- 自定义ActionBar 基础样式 -->
+    <style name="actionbar.base.style" parent="@style/Widget.AppCompat.ActionBar">
+        <!--ActionBar本身背景颜色-->
+        <item name="android:background">@color/background_actionbar</item>
+        <!--ActionBar被分离时tab的背景颜色-->
+        <item name="android:backgroundStacked">@color/white</item>
+        <!--ActionBar Item在分割到底部时的背景颜色-->
+        <item name="android:titleTextStyle">@style/actionBarTitleStyle</item>
+
+        <!--Support2.1及以上-->
+        <item name="background">@color/background_actionbar</item>
+        <item name="backgroundStacked">@color/white</item>
+        <item name="titleTextStyle">@style/actionBarTitleStyle</item>
+    </style>
+    <!-- 自定义ActionBarTitle标题基础样式 -->
+    <style name="actionBarTitleStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!-- 自定义ActionBarTab标签基础样式 -->
+    <style name="actionBarTabStyle" parent="Widget.AppCompat.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_actionbar</item>
+        <!-- Support2.1 -->
+        <item name="background">@drawable/tab_indicator_ab_actionbar</item>
+    </style>
+    <!-- 自定义ActionBarTabText基础样式 -->
+    <style name="actionBarTabTextStyle" parent="Widget.AppCompat.ActionBar.TabText">
+        <item name="android:textColor">@color/tab_text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>
