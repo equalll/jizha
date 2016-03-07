@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.example.sony.jizha.activity.RegisterActivity">
+
+    <!--登陆界面显示-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/basicPaddingSize">
+
+        <!--自定义的文本框，输入注册账号-->
+        <com.example.sony.jizha.Widget.ClearEditText
+            android:id="@+id/etxtEmail"
+            style="@style/editText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:drawableLeft="@drawable/icon_reg_name"
+            android:drawablePadding="10dp"
+            android:hint="@string/hint_register_email" />
+
+        <!--自定义的文本框，输入注册密码-->
+        <com.example.sony.jizha.Widget.ClearEditText
+
+            android:id="@+id/etxtPwd"
+            style="@style/editText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/icon_reg_password"
+            android:drawablePadding="10dp"
+            android:hint="@string/hint_register_pwd"
+            android:inputType="textPassword" />
+
+        <!--自定义的文本框，确认输入注册密码-->
+        <com.example.sony.jizha.Widget.ClearEditText
+            android:id="@+id/suretxtPwd"
+            style="@style/editText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/icon_reg_password"
+            android:drawablePadding="10dp"
+            android:hint="@string/hint_sure_register_pwd"
+            android:inputType="textPassword" />
+
+        <!--注册按钮-->
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/bigGreenButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="register"
+            android:text="@string/complete_register" />
+    </LinearLayout>
+
+</FrameLayout>

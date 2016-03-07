@@ -129,6 +129,7 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
         intent.putExtra(Constant.FRIEND, profile);
 
         Log.d(TAG, "----------->profile:" + profile);
+
         intent.putExtra("from", 1);
 
         startActivity(intent);

@@ -157,19 +157,19 @@ public class MessageHandler {
 
     /**
      * token登陆失败，重新登陆
-     * <p>
+     * <p/>
      * activity的启动模式：4种
-     * <p>
+     * <p/>
      * 1、standard：默认模式：每次启动都会创建一个新的activity对象，放到目标任务栈中
-     * <p>
+     * <p/>
      * 2、singleTop：判断当前的任务栈顶是否存在相同的activity对象，如果存在，则直接使用，如果不存在，那么创建新的activity对象放入栈中
-     * <p>
+     * <p/>
      * 3、singleTask：在任务栈中会判断是否存在相同的activity，如果存在，那么会清除该activity之上的其他activity对象显示，如果不存在，则会创建一个新的activity放入栈顶
-     * <p>
+     * <p/>
      * 4、singleIntance：会在一个新的任务栈中创建activity，并且该任务栈种只允许存在一个activity实例，其他调用该activity的组件会直接使用该任务栈种的activity对象
-     * <p>
+     * <p/>
      * intent flags属性来指定启动模式：Intent.FLAG_ACTIVITY_NEW_TASK      相当于singleTask
-     * <p>
+     * <p/>
      * Intent. FLAG_ACTIVITY_CLEAR_TOP相当于singleTop
      *
      * @param context
@@ -491,6 +491,7 @@ public class MessageHandler {
         intent.putExtra(Constant.EXTRA_MSG, chatMsg);
         //设置本应用能收到广播，其他应用收不到
         intent.setPackage(AppUtil.getAppInfo(context).getPkgName());
+
 
         //发送广播
         context.sendBroadcast(intent);

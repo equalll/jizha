@@ -114,7 +114,15 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
 
         // 从搜索结果页面进来
         if (from == 1) {
+
             //获取memberid
+            // ----------->profile:Contact{id=1, memberid=1, contactid=2, email='1261028904@163.com',
+            // name='奥迪', headbig='http://192.168.189.84:8080/imserver/imgs/head/2.jpg',
+            // headmid='http://192.168.189.84:8080/imserver/imgs/head/2.jpg',
+            // headsmall='http://192.168.189.84:8080/imserver/imgs/head/2.jpg',
+            // registetime=Mon Mar 07 10:00:16 格林尼治标准时间+0800 2016,
+            // createtime=Fri Mar 04 00:00:00 格林尼治标准时间+0800 2016, pinyin='AODI'}
+
             long memberid = PreferencesUtils.getLong(this, Constant.MEMBER_ID);
             //联系人的id与会员id相同，说明是本人查看详细信息
 
@@ -194,7 +202,8 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             String from = profile.getProvince() + "-" + profile.getCity();
             mTxtFrom.setText(from);
         }
-        mTxtAge.setText(profile.getAge() + "");
+
+        mTxtAge.setText(profile.getAge() == 0 ? 22 + "" : profile.getAge() + "");
         mTxtCompany.setText(profile.getCompany());
     }
 
@@ -280,7 +289,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         //获取登陆用户信息
         Member member = JzApplication.getInstance().getmLoginMember();
 
-        Log.d(TAG,"------------>member:" + member.toString());
+        Log.d(TAG, "------------>member:" + member.toString());
 
         Map<String, String> params = new HashMap<String, String>();
 

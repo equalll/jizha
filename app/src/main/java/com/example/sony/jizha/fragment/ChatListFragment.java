@@ -23,6 +23,7 @@ import com.example.sony.jizha.model.ChatMsg;
 import com.example.sony.jizha.model.ChatMsgEx;
 import com.example.sony.jizha.service.ChatMsgService;
 import com.example.sony.jizha.system.Constant;
+import com.example.sony.jizha.system.JzApplication;
 
 import java.io.Serializable;
 import java.util.List;
@@ -59,6 +60,9 @@ public class ChatListFragment extends RoboFragment implements AdapterView.OnItem
 
     //未读消息的数量
     private int unReadChatMsgCount;
+
+    // 但只有Application才能保证在程序运行期间一直存在并且具有唯一性，因此在程序中可以使用Application来获得Context而不用担心空指针。
+    private Context context = JzApplication.getInstance();
 
 
     /**
@@ -160,6 +164,9 @@ public class ChatListFragment extends RoboFragment implements AdapterView.OnItem
 
         //从ChatActivity返回时需要更新ChatFragment中的信息显示，所以需要进行结果返回的处理
         startActivityForResult(intent, 10000);
+
+        //更新未读消息为已读
+        mChatMsgService.updateUnreadChatMsg(context, chatMsgEx.getContactid());
     }
 
 
@@ -231,7 +238,7 @@ public class ChatListFragment extends RoboFragment implements AdapterView.OnItem
         //查询聊天的历史记录
         mChatMsgs = mChatMsgService.findHistoryChatMsg(getActivity());
 
-        Log.d(TAG,"------------>historyChatMsgCount:"+mChatMsgs.size());
+        Log.d(TAG, "------------>historyChatMsgCount:" + mChatMsgs.size());
 
         //清除适配器中的数据
         mAdapter.clear();

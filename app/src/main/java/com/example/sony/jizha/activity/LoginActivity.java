@@ -119,6 +119,7 @@ public class LoginActivity extends BaseActivity {
         doLogin(email, pwd);
     }
 
+
     /**
      * 登陆方法
      *
@@ -163,6 +164,13 @@ public class LoginActivity extends BaseActivity {
                 ToastUtils.show(LoginActivity.this, msg);
             }
         });
+    }
+
+    /**
+     * 执行注册
+     */
+    public void register(View view) {
+        //跳转到主界面
     }
 
     /**

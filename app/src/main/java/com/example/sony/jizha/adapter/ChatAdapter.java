@@ -41,7 +41,7 @@ import java.util.Random;
  */
 public class ChatAdapter extends BaseAdapter {
 
-    public static final String TAG = "ContactAdapter";
+    public static final String TAG = "ChatAdapter";
 
     //初始化时间格式化工具
     private PrettyDateFormat dateFormat = new PrettyDateFormat("@", "yy-MM-dd HH:mm");
@@ -168,7 +168,7 @@ public class ChatAdapter extends BaseAdapter {
     /**
      * 将未发送的消息发送
      *
-     * @param chatMsg  未发送的消息
+     * @param chatMsg  发送的消息
      * @param position 消息位置
      */
     private void sendMsg(final ChatMsg chatMsg, final int position) {
@@ -179,14 +179,14 @@ public class ChatAdapter extends BaseAdapter {
         //服务器端会通过会员id获取推送通道
         param.put("memberId", mMember.getId() + "");
         //通过friendId确定要推送的好友
-        param.put("friendId", mFriend.getId() + "");
+        param.put("friendId", mFriend.getContactid() + "");
         //要推送到推送服务器的消息
         param.put("msg", chatMsg.getChatMsg());
 
         //token令牌
         //param.put("token", mMember.getToken());
 
-        Log.d(TAG, "---------------->map:" + mMember.getId() + " : " + chatMsg.getChatMsg() + " : " + mFriend.getId());
+        Log.d(TAG, "---------------->map:" + mMember.getId() + " : " + chatMsg.getChatMsg() + " : " + mFriend.getContactid());
 
         //向好友发送信息
         mHttpClient.post(Constant.API.URL_CHART_SEND, param, 0, new RequestListener() {

@@ -48,7 +48,7 @@ public class Constant {
      */
     public static class API {
         //服务器地址
-        public static final String URL_BASE = "http://115.51.124.174:8080/imserver/";
+        public static final String URL_BASE = "http://192.168.189.84:8080/imserver/";
         //手机开始界面webView中显示的界面
         public static final String URL_START = URL_BASE + "start_android.html";
 

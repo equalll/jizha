@@ -155,6 +155,34 @@ public class ChatMsgService {
     }
 
     /**
+     * 接收通知以后将未读的消息更新状态为已读
+     *
+     * @param context
+     * @param contactid
+     */
+    public void updateUnreadChatMsg(Context context, long contactid) {
+
+        QueryBuilder<ChatMsg> queryBuilder = mChatMsgDao.queryBuilder();
+
+        queryBuilder.where(ChatMsgDao.Properties.Memberid.eq(PreferencesUtils.getLong(context, Constant.MEMBER_ID)));
+        queryBuilder.where(ChatMsgDao.Properties.Contactid.eq(contactid));
+        queryBuilder.where(ChatMsgDao.Properties.Status.eq(ChatMsg.STATUS_UNREAD));
+        //查出未读消息
+        List<ChatMsg> chatMsgs = queryBuilder.listLazy();
+
+        //如果有未读消息
+        if (chatMsgs != null && chatMsgs.size() > 0) {
+            for (ChatMsg chatMsg : chatMsgs) {
+                //将未读消息的状态设置为已读
+                chatMsg.setStatus(ChatMsg.STATUS_READED);
+                //更新消息状态
+                this.mChatMsgDao.updateInTx(chatMsg);
+            }
+        }
+    }
+
+
+    /**
      * 查询历史聊天信息
      *
      * @param context 上下文
@@ -211,7 +239,6 @@ public class ChatMsgService {
         cursor.close();
 
         return chatMsgExes;
-
     }
 
 

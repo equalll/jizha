@@ -41,6 +41,16 @@
         android:onClick="login"
         android:text="@string/login"/>
 
+    <!--注册按钮-->
+    <Button
+        android:id="@+id/btn"
+        style="@style/bigRedButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="register"
+        android:text="@string/register"/>
+
     <!--页面底部展示信息-->
     <TextView
         android:layout_width="fill_parent"

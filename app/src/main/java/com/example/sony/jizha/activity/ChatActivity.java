@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -49,6 +50,7 @@ import roboguice.inject.InjectView;
 @ContentView(R.layout.activity_chat)
 public class ChatActivity extends BaseActivity {
 
+    private static final String TAG = "ChatActivity";
     //聊天信息输入
     @InjectView(R.id.etxtMsg)
     private EditText mEtxtMsg;
@@ -71,6 +73,9 @@ public class ChatActivity extends BaseActivity {
     private Context context = JzApplication.getInstance();
     ///初始化聊天信息服务，用于读取聊天内容
     private ChatMsgService chatMsgService = ChatMsgService.getInstance();
+
+
+
     //创建聊天信息广播接收对象
     private ChatBroadcastReceiver receiver;
 
@@ -235,6 +240,10 @@ public class ChatActivity extends BaseActivity {
     }
 
 
+
+
+
+
     /**
      * 聊天信息的广播接收，采用动态注册，静态注册的话要在xml中声明
      */
@@ -249,12 +258,15 @@ public class ChatActivity extends BaseActivity {
                 //判断是否是聊天信息
                 if (obj instanceof ChatMsg) {
                     ChatMsg chatMsg = (ChatMsg) obj;
+
+                    Log.d(TAG,"----------------->chatMsg信息:" + chatMsg + chatMsg.getMemberid() + chatMsg.getContactid());
+
                     // 正在聊天的朋友和发来消息的是否是同一个人
                     if (chatMsg.getContactid() == friend.getContactid()) {
                         chatAdapter.addData(chatMsg);
                         mListView.setSelection(chatAdapter.getCount() - 1);
                         //把消息更新成已读
-                        //chatMsgService.updateUnreadChatMsg(ChatActivity.this, friend.getContactid());
+                        chatMsgService.updateUnreadChatMsg(ChatActivity.this, friend.getContactid());
                     }
                 }
             }

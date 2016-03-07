@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.example.sony.jizha"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sony.jizha">
 
     <!-- Push service 运行需要的权限 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
-    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <!-- android:name=".system.JzApplication" 声明使用的application -->
     <application
@@ -26,70 +25,65 @@
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/Theme.ActionBar">
+
         <!-- 开始activity -->
         <activity
             android:name=".activity.StartActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <!-- 主界面activity -->
-        <activity android:name=".activity.HomeActivity"/>
+        <activity android:name=".activity.HomeActivity" />
         <!-- 登陆activity -->
-        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.LoginActivity" />
 
         <!-- 初始化用户数据service -->
-        <service android:name=".service.DataInitService"/>
+        <service android:name=".service.DataInitService" />
 
         <!-- 详细信息activity -->
         <activity
             android:name=".activity.ProfileActivity"
-            android:label="@string/title_activity_profile">
-        </activity>
+            android:label="@string/title_activity_profile" />
         <!-- 聊天activity -->
-        <!-- android:windowSoftInputMode="adjustResize"解决键盘谈起挤压listView的bug-->
+        <!-- android:windowSoftInputMode="adjustResize"解决键盘谈起挤压listView的bug -->
         <activity
             android:name=".activity.ChatActivity"
             android:label="@string/title_activity_chat"
             android:parentActivityName=".activity.HomeActivity"
             android:windowSoftInputMode="adjustResize">
 
-            <!--4.1版本之前的版本，之后的版本用parentActivityName-->
+            <!-- 4.1版本之前的版本，之后的版本用parentActivityName -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.HomeActivity"></meta-data>
-
+                android:value=".activity.HomeActivity" />
         </activity>
         <!-- 好友搜索activity -->
         <activity
             android:name=".activity.FriendSearchActivity"
-            android:label="@string/title_activity_friend_search">
-        </activity>
+            android:label="@string/title_activity_friend_search" />
         <!-- 好友搜索结果activity -->
         <activity
             android:name=".activity.FriendSearchResultActivity"
-            android:label="@string/title_activity_friend_search_result">
-        </activity>
+            android:label="@string/title_activity_friend_search_result" />
         <!-- 添加好友请求activity -->
         <activity
             android:name=".activity.RequestMsgActivity"
-            android:label="@string/title_activity_request_msg">
-        </activity>
-
+            android:label="@string/title_activity_request_msg" />
 
         <!-- push应用定义消息receiver声明 -->
         <receiver android:name=".message.JzPushMessageReceiver">
             <intent-filter>
 
                 <!-- 接收push消息 -->
-                <action android:name="com.baidu.android.pushservice.action.MESSAGE"/>
+                <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
                 <!-- 接收bind,unbind,fetch,delete等反馈消息 -->
-                <action android:name="com.baidu.android.pushservice.action.RECEIVE"/>
-                <action android:name="com.baidu.android.pushservice.action.notification.CLICK"/>
+                <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
             </intent-filter>
         </receiver>
 
@@ -98,28 +92,28 @@
             android:name="com.baidu.android.pushservice.PushServiceReceiver"
             android:process=":bdservice_v1">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-                <action android:name="com.baidu.android.pushservice.action.notification.SHOW"/>
-                <action android:name="com.baidu.android.pushservice.action.media.CLICK"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+                <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
                 <!-- 以下四项为可选的action声明，可大大提高service存活率和消息到达速度 -->
-                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
-                <action android:name="android.intent.action.USER_PRESENT"/>
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
         <receiver
             android:name="com.baidu.android.pushservice.RegistrationReceiver"
             android:process=":bdservice_v1">
             <intent-filter>
-                <action android:name="com.baidu.android.pushservice.action.METHOD"/>
-                <action android:name="com.baidu.android.pushservice.action.BIND_SYNC"/>
+                <action android:name="com.baidu.android.pushservice.action.METHOD" />
+                <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
 
-                <data android:scheme="package"/>
+                <data android:scheme="package" />
             </intent-filter>
         </receiver>
 
@@ -128,37 +122,44 @@
             android:exported="true"
             android:process=":bdservice_v1">
             <intent-filter>
-                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE"/>
+                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
             </intent-filter>
         </service>
         <service
             android:name="com.baidu.android.pushservice.CommandService"
-            android:exported="true"/>
+            android:exported="true" />
         <!-- push结束 -->
 
 
         <!-- 在百度开发者中心查询应用的API Key -->
         <meta-data
             android:name="bd_api_key"
-            android:value="HhIopZ2V44iw2N1ZGCnBifFP"/>
+            android:value="HhIopZ2V44iw2N1ZGCnBifFP" />
 
-
-        <!--友盟自动更新应用的api key-->
+        <!-- 友盟自动更新应用的api key -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="568dc253e0f55acfb0001990"/>
+            android:value="568dc253e0f55acfb0001990" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Channel ID"/>
-        <!-- 友盟的服务-->
+            android:value="Channel ID" />
+        <!-- 友盟的服务 -->
         <service
             android:name="com.umeng.update.net.DownloadingService"
-            android:process=":DownloadingService">
-        </service>
+            android:process=":DownloadingService" />
         <!-- 友盟界面activity -->
         <activity
             android:name="com.umeng.update.UpdateDialogActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_register"
+            android:parentActivityName=".Widget.BaseActivity"
+            android:theme="@style/FullscreenTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sony.jizha.Widget.BaseActivity" />
         </activity>
     </application>
 
