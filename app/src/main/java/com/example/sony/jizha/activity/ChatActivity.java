@@ -243,7 +243,6 @@ public class ChatActivity extends BaseActivity {
 
 
 
-
     /**
      * 聊天信息的广播接收，采用动态注册，静态注册的话要在xml中声明
      */

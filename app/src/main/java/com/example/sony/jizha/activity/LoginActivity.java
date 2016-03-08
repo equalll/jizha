@@ -171,6 +171,7 @@ public class LoginActivity extends BaseActivity {
      */
     public void register(View view) {
         //跳转到主界面
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 
     /**
@@ -190,7 +191,7 @@ public class LoginActivity extends BaseActivity {
      */
     private void startInitDataService(long memberid) {
         //根据memberid判断数据是否初始化
-        boolean isDataInit = PreferencesUtils.getBoolean(this, Constant.IS_DATA_INIT+memberid, false);
+        boolean isDataInit = PreferencesUtils.getBoolean(this, Constant.IS_DATA_INIT + memberid, false);
         Log.d(TAG, "isDataInit is " + isDataInit);
         // 如果没有初始化过数据就开启一天服务加载数据
         if (!isDataInit) {

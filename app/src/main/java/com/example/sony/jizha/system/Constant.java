@@ -54,6 +54,8 @@ public class Constant {
 
         //通过邮箱和密码登录
         public static final String URL_LOGIN = URL_BASE + "login";
+        //通过邮箱和密码注册
+        public static final String URL_REGISTER = URL_BASE + "register";
         //通过保存的token 信息登陆
         public static final String URL_LOGIN_TOKEN = URL_BASE + "login/token";
         //通过会员id获取好友
