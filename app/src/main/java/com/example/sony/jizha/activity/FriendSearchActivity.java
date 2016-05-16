@@ -1,5 +1,6 @@
 package com.example.sony.jizha.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,7 +16,10 @@ import android.widget.TextView;
 import com.example.sony.jizha.R;
 import com.example.sony.jizha.Widget.BaseActivity;
 import com.example.sony.jizha.system.Constant;
+import com.example.sony.jizha.system.JzApplication;
 import com.example.sony.jizha.utils.ToastUtils;
+
+import org.w3c.dom.Text;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -38,6 +42,18 @@ public class FriendSearchActivity extends BaseActivity implements TextView.OnEdi
     @InjectView(R.id.etxtWord)
     private EditText mEtxtWord;
 
+    @InjectView(R.id.searchByContact)
+    private TextView searchByContact;
+
+    @InjectView(R.id.searchByQQ)
+    private TextView searchByQQ;
+
+    @InjectView(R.id.searchByScan)
+    private TextView searchByScan;
+
+    // 但只有Application才能保证在程序运行期间一直存在并且具有唯一性，因此在程序中可以使用Application来获得Context而不用担心空指针。
+    private Context context = JzApplication.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +62,8 @@ public class FriendSearchActivity extends BaseActivity implements TextView.OnEdi
         initActionBarBasic();
         //文本框的动作监听事件
         mEtxtWord.setOnEditorActionListener(this);
+
+
     }
 
 
@@ -67,6 +85,33 @@ public class FriendSearchActivity extends BaseActivity implements TextView.OnEdi
      */
     public void query(View v) {
         queryFriends();
+    }
+
+    /**
+     * 通过通讯录查询好友
+     *
+     * @param v
+     */
+    public void searchByContact(View v) {
+        ToastUtils.show(context,"通过通讯录查询好友功能未开放");
+    }
+
+    /**
+     * 通过QQ查询好友
+     *
+     * @param v
+     */
+    public void searchByQQ(View v) {
+        ToastUtils.show(context, "通过QQ查询好友功能未开放");
+    }
+
+    /**
+     * 通过二维码查询好友
+     *
+     * @param v
+     */
+    public void searchByScan(View v) {
+        ToastUtils.show(context, "通过二维码查询好友功能未开放");
     }
 
     /**

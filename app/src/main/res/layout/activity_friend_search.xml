@@ -40,28 +40,34 @@
 
     <!--通过通讯录查找-->
     <TextView
+        android:id="@+id/searchByContact"
         style="@style/prf_item_for_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:onClick="searchByContact"
         android:drawableLeft="@drawable/icon_find_more_friend_mobile"
         android:text="@string/friend_find_from_contact"/>
 
     <!--通过QQ查找-->
     <TextView
+        android:id="@+id/searchByQQ"
         style="@style/prf_item_for_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
+        android:onClick="searchByQQ"
         android:drawableLeft="@drawable/icon_find_more_friend_qq"
         android:text="@string/friend_find_from_qq"/>
 
     <!--扫描二维码添加-->
     <TextView
+        android:id="@+id/searchByScan"
         style="@style/prf_item_for_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
+        android:onClick="searchByScan"
         android:drawableLeft="@drawable/icon_find_more_friend_scan"
         android:text="@string/friend_find_from_scan"/>
 

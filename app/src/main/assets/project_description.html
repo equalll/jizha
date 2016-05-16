@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>叽喳</title>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['$$$','$$$']]}});</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<h3>叽喳</h3>
+
+<p><strong>一款基于Android的即时通讯系统客户端，包括登陆注册，好友聊天，查询好友，添加好友，处理好友请求等几个子模块。项目采取的是MVC架构开发，由于还是摸索阶段，可能不是很规范。但基本上应该是这么个套路，至少我个人认为是这样的~恩，就是这样的！</strong></p>
+
+<hr />
+
+<h3>登陆注册</h3>
+
+<ul>
+<li><p>介绍：用户如果有账号的话可以直接进行登陆，如果没有可以先进行注册，然后进行登陆</p></li>
+<li><p>功能：用户在自定义的EditText中输入账号和密码，点击登陆，通过http请求，将账号和密码传输到服务器端，服务器端将数据进行处理，然后返回相应的数据，客户端解析数据判断是否登陆或者成功。</p></li>
+</ul>
+
+
+<h3>好友聊天</h3>
+
+<ul>
+<li><p>介绍：由于处于摸索阶段，只实现了基本的文字聊天，后续会添加其他相应的功能，如发送图片，语音等等。</p></li>
+<li><p>功能：由于实现即时通讯需要使用各种协议，现在使用最多的协议是XMPP。由于还是摸索阶段，本次设计借用了百度云推送平台实现了即时通讯，客户端传递要发送的数据到服务器端，服务器端将要发送的数据传递到百度云推送平台，然后百度云推送平台通过唯一通道推送消息给要发送的人！这个唯一通道
+当每个客户端与百度云推送服务器连接时会有一个唯一的推送通道channelID，以及以一个userID，登陆时也会需要channelID以及userID。这就是大概的实现流程，然后android客户端就是数据的展示与处理。当应用启动在聊天界面以及主界面时，信息会直接推送过来，如果没有的话会发notification进行通知。</p></li>
+</ul>
+
+
+<h3>查询好友</h3>
+
+<ul>
+<li><p>介绍：实现了所有用户的模糊查询，可以通过关键词进行或者一些账号进行查询。</p></li>
+<li><p>功能：android客户端将关键词传输到服务器端，服务器端通过关键词从数据库查询出需要的信息，将信息封装为json格式传递给客户端，客户端解析json数据，并将数据显示在界面中！</p></li>
+</ul>
+
+
+<h3>添加好友</h3>
+
+<ul>
+<li><p>介绍：如果非好友关系是不能进行即时通讯的，需要添加用户为好友。</p></li>
+<li><p>功能：点击查询好友出的列表，点击查看详细信息，会有添加好友，然后弹出自定义的添加好友请求对话框，等待用户处理，用户同意添加好友请求之后，成为好友关系，就可以进行即时通讯交流了！</p></li>
+</ul>
+
+
+<h3>处理好友请求</h3>
+
+<ul>
+<li><p>介绍：用户可以处理添加好友的请求。</p></li>
+<li><p>功能：用户同意添加好友请求，成为好友关系，可以进行即时通讯！</p></li>
+</ul>
+
+
+<h3>使用的开源项目</h3>
+
+<ul>
+	<li><p>介绍：借鉴了一些开源的项目，开源项目功能比较齐全，展示的效果也比自己写的要好。</p></li>
+	<li><p>功能：开源项目完美展示需要的信息！</p></li>
+</ul>
+
+<h3>个人感悟</h3>
+
+<ul>
+	<li><p>本次设计耗费了大量的时间，参考了大量的开源项目以及各种开源控件，以及github,csdn等等，让我学到了很多。本次设计推送到了github上，客户端地址:<a>https://github.com/nwj20100401/jizha.git</a>  服务器端地址:<a>ttps://github.com/nwj20100401/imserver.git</a></p></li>
+</ul>
+
+</body>
+</html>

@@ -26,6 +26,7 @@ import com.example.sony.jizha.system.Constant;
 import com.example.sony.jizha.system.JzApplication;
 import com.example.sony.jizha.utils.PreferencesUtils;
 import com.example.sony.jizha.utils.SideBar;
+import com.example.sony.jizha.utils.ToastUtils;
 
 import java.util.List;
 
@@ -290,6 +291,8 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
 
         View newFriendView = headView.findViewById(R.id.layoutNewFriend);
 
+        View layoutNiu = headView.findViewById(R.id.layoutNiu);
+
         //新的好友点击事件
         newFriendView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -298,6 +301,15 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
                 Intent intent = new Intent(getActivity(), RequestMsgActivity.class);
                 //跳转处理返回的结果
                 startActivityForResult(intent, Constant.REQUEST_CODE);
+            }
+        });
+
+        //技术大牛点击事件
+        layoutNiu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ToastUtils.show(context, "功能未开放");
             }
         });
 
