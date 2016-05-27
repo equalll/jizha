@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -19,14 +21,15 @@ import com.example.sony.jizha.R;
 import com.example.sony.jizha.activity.ProfileActivity;
 import com.example.sony.jizha.activity.RequestMsgActivity;
 import com.example.sony.jizha.adapter.ContactAdapter;
+import com.example.sony.jizha.http.VolleyHttpClient;
 import com.example.sony.jizha.model.Contact;
+import com.example.sony.jizha.robot.RobotChatActivity;
 import com.example.sony.jizha.service.ContactService;
 import com.example.sony.jizha.service.RequestMsgService;
 import com.example.sony.jizha.system.Constant;
 import com.example.sony.jizha.system.JzApplication;
 import com.example.sony.jizha.utils.PreferencesUtils;
 import com.example.sony.jizha.utils.SideBar;
-import com.example.sony.jizha.utils.ToastUtils;
 
 import java.util.List;
 
@@ -34,6 +37,8 @@ import roboguice.fragment.RoboFragment;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+
+import android.view.ViewGroup.LayoutParams;
 
 /**
  * Created with Android Studio
@@ -48,7 +53,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
  * @version V1.0
  */
 @ContentView(R.layout.fragment_contactlist)
-public class ContactListFragment extends RoboFragment implements AdapterView.OnItemClickListener {
+public class ContactListFragment extends RoboFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, View.OnClickListener {
 
     public static final String TAG = "ContactListFragment";
 
@@ -74,6 +79,19 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
     private TextView mTxtBadge;
     //初始化好友请求服务
     private RequestMsgService mRequestService = RequestMsgService.getInstance();
+
+    //窗口弹出提示
+    private PopupWindow pw;
+
+    //弹出删除
+    private TextView tv_uninstall;
+
+    //实例化volley请求
+    protected VolleyHttpClient mHttpClient;
+
+    //当前点击的联系人
+    private Contact currentContact;
+
 
     //在Fragment的生命周期中，onAttach()和onDetach()之间getActivity()函数才会返回正确的对象，否则的话返回null。
     //Android程序中Application、Service和Activity都实现了Context，
@@ -137,6 +155,93 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
     }
 
     /**
+     * ListView的item长按监听事件
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+        currentContact = (Contact) parent.getAdapter().getItem(position);
+        showPopup(view);
+        return true;
+    }
+
+    /**
+     * 长按弹出删除按钮
+     *
+     * @param view
+     */
+    private void showPopup(View view) {
+        // 加载pop显示的布局文件
+        View contentView = View.inflate(context,
+                R.layout.view_pop, null);
+        // 得到pop界面中的控件
+        tv_uninstall = (TextView) contentView.findViewById(R.id.tv_uninstall);
+
+        tv_uninstall.setOnClickListener(this);
+
+        pw = new PopupWindow(contentView,
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, true);
+
+        // 设置背景：只有添加了背景后才能响应返回键的事件
+        pw.setBackgroundDrawable(new ColorDrawable());
+        // 把pop显示在某个控件的下面
+        // view 现在这个view的下面
+        // xoff 在水平方向的偏移量
+        // yoff 在垂直方向的偏移量
+        pw.showAsDropDown(view, 250, -view.getHeight());
+    }
+
+    /**
+     * 长按弹出删除按钮的点击事件
+     *
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+
+        pw.dismiss();
+//        Map<String, String> map = new HashMap<String, String>(1);
+//        map.put("memberid", currentContact.getId() + "");
+//
+//        mHttpClient.post(Constant.API.URL_REGISTER, map, R.string.now_activity_register, new RequestListener() {
+//            @Override
+//            public void onPreRequest() {
+//
+//            }
+//
+//            @Override
+//            public void onRequestSuccess(BaseResponse response) {
+//                if (response.isSuccess()) {
+//                    return;
+//                } else {
+//                    ToastUtils.show(context, "未删除，请稍后再试");
+//                }
+//            }
+//
+//            @Override
+//            public void onRequestError(int code, String msg) {
+//                ToastUtils.show(context, "系统错误，请稍后再试");
+//            }
+//
+//            @Override
+//            public void onRequestFail(int code, String msg) {
+//                ToastUtils.show(context, "服务器错误，请稍后再试");
+//            }
+//        });
+        mContacts.remove(currentContact);
+        //手机端删除联系人
+        contactService.delete(context,currentContact);
+        mAdapter.notifyDataSetChanged();
+    }
+
+
+    /**
      * 判断联系人有没有加载完成
      */
     class LoadContactRunnable implements Runnable {
@@ -179,6 +284,7 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //添加view
         View view = inflater.inflate(R.layout.fragment_contactlist, container, false);
+
         Log.d(TAG, "------------->ContactFragment View  Create");
         return view;
     }
@@ -195,6 +301,8 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
 
         //绑定item点击事件
         mListView.setOnItemClickListener(this);
+        //绑定item的长按点击事件
+        mListView.setOnItemLongClickListener(this);
 
         Log.d(TAG, "------------->ContactFragment View  Created");
 
@@ -209,6 +317,9 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
                 int position = mAdapter.getPositionForSection(s.charAt(0));
                 //根据字母显示listView
                 mListView.setSelection(position);
+
+                //弹出提示
+                //ToastUtils.show(context,s);
             }
         });
 
@@ -268,6 +379,8 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
         mAdapter.clear();
         //添加数据
         mAdapter.addData(mContacts);
+
+        mAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -304,12 +417,19 @@ public class ContactListFragment extends RoboFragment implements AdapterView.OnI
             }
         });
 
-        //技术大牛点击事件
+        //机器人点击事件
         layoutNiu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ToastUtils.show(context, "功能未开放");
+                Contact contact = contactService.getContact(context,50);
+
+                //跳转到详细信息界面
+                Intent intent = new Intent(context, RobotChatActivity.class);
+                //intent传值
+                intent.putExtra(Constant.FRIEND, contact);
+
+                startActivity(intent);
             }
         });
 

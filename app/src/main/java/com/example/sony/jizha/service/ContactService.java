@@ -91,4 +91,16 @@ public class ContactService {
         queryBuilder.where(ContactDao.Properties.Contactid.eq(contactid));
         return queryBuilder.unique();
     }
+
+
+    /**
+     * 删除联系人
+     *
+     * @param context
+     * @param currentContact
+     */
+    public void delete(Context context, Contact currentContact) {
+
+        mContactDao.delete(currentContact);
+    }
 }

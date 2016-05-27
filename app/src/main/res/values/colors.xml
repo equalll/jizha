@@ -5,7 +5,7 @@
     <color name="white">#ffffffff</color>
     <color name="black">#ff000000</color>
     <color name="background_normal">#f2f2f2</color>
-    <color name="background_actionbar">#db70db</color>
+    <color name="background_actionbar">#0FA07F</color>
     <color name="background_badge">#FF5553</color>
     <color name="background_time">#C9C9C9</color>
     <color name="background_dialog">#fffbf6f2</color>

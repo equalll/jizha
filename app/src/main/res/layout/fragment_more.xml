@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--更多页面布局-->
+<?xml version="1.0" encoding="utf-8"?><!--更多页面布局-->
 <LinearLayout
-    style="@style/layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/layout"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
@@ -19,7 +18,7 @@
         <ImageView
             android:id="@id/imageviewHead"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -34,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:textColor="@color/text_title"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <!--账号-->
             <TextView
@@ -45,21 +44,20 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="@color/text_normal"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-
-    <!--系统设置-->
+    <!--应用分享-->
     <RelativeLayout
         android:id="@+id/viewSetting"
         style="@style/prf_item"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="viewSetting"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:onClick="viewSetting">
 
         <ImageView
             android:id="@+id/imageSetting"
@@ -67,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/icon_more_setting"/>
+            android:src="@drawable/icon_more_setting" />
 
 
         <TextView
@@ -77,7 +75,7 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/imageSetting"
-            android:text="@string/sys_setting"/>
+            android:text="@string/sys_setting" />
 
 
         <ImageView
@@ -85,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/icon_arror_right"/>
+            android:src="@drawable/icon_arror_right" />
     </RelativeLayout>
 
     <!--关于我们-->
@@ -94,8 +92,8 @@
         style="@style/prf_item"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="viewAboutus"
-        android:layout_marginTop="1dp">
+        android:layout_marginTop="1dp"
+        android:onClick="viewAboutus">
 
         <ImageView
             android:id="@+id/imageAboutUS"
@@ -103,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/icon_more_about_us"/>
+            android:src="@drawable/icon_more_about_us" />
 
 
         <TextView
@@ -113,7 +111,7 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/imageAboutUS"
-            android:text="@string/about_us"/>
+            android:text="@string/about_us" />
 
 
         <ImageView
@@ -121,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/icon_arror_right"/>
+            android:src="@drawable/icon_arror_right" />
     </RelativeLayout>
 
     <!--退出登录按钮-->
@@ -131,6 +129,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/logout"/>
+        android:text="@string/logout" />
 
 </LinearLayout>

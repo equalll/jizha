@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -14,13 +15,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.example.sony.jizha.R;
 import com.example.sony.jizha.activity.ChatActivity;
+import com.example.sony.jizha.activity.RobotChatActivity;
 import com.example.sony.jizha.adapter.ChatListAdapter;
 import com.example.sony.jizha.adapter.ChatListAdapter1;
 import com.example.sony.jizha.model.ChatMsg;
 import com.example.sony.jizha.model.ChatMsgEx;
+import com.example.sony.jizha.model.Contact;
 import com.example.sony.jizha.service.ChatMsgService;
 import com.example.sony.jizha.system.Constant;
 import com.example.sony.jizha.system.JzApplication;
@@ -36,7 +41,7 @@ import roboguice.inject.InjectView;
  * 聊天列表
  * Created by sony on 2015/9/7.
  */
-public class ChatListFragment extends RoboFragment implements AdapterView.OnItemClickListener {
+public class ChatListFragment extends RoboFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, View.OnClickListener {
 
     public static final String TAG = "ChatListFrament";
 
@@ -63,6 +68,16 @@ public class ChatListFragment extends RoboFragment implements AdapterView.OnItem
 
     // 但只有Application才能保证在程序运行期间一直存在并且具有唯一性，因此在程序中可以使用Application来获得Context而不用担心空指针。
     private Context context = JzApplication.getInstance();
+
+    //窗口弹出提示
+    private PopupWindow pw;
+
+    //弹出删除
+    private TextView tv_uninstall;
+
+    //聊天信息
+    private ChatMsgEx currentChatMsgEx;
+
 
 
     /**
@@ -137,6 +152,8 @@ public class ChatListFragment extends RoboFragment implements AdapterView.OnItem
         //listView的item点击事件
         mListView.setOnItemClickListener(this);
 
+        mListView.setOnItemLongClickListener(this);
+
         //显示未读消息数量
         showTotalUnreadMsgCount(mChatMsgs);
     }
@@ -156,14 +173,15 @@ public class ChatListFragment extends RoboFragment implements AdapterView.OnItem
         //根据位置获取聊天信息的具体对象
         ChatMsgEx chatMsgEx = mAdapter.getItem(position);
 
+
         //点击之后跳转到聊天的界面 ChatActivity
         Intent intent = new Intent(getActivity(), ChatActivity.class);
-
         //将联系人的信息传递
         intent.putExtra(Constant.FRIEND, chatMsgEx.getContact());
 
         //从ChatActivity返回时需要更新ChatFragment中的信息显示，所以需要进行结果返回的处理
         startActivityForResult(intent, 10000);
+
 
         //更新未读消息为已读
         mChatMsgService.updateUnreadChatMsg(context, chatMsgEx.getContactid());
@@ -208,6 +226,63 @@ public class ChatListFragment extends RoboFragment implements AdapterView.OnItem
     public void onStop() {
         super.onStop();
         getActivity().unregisterReceiver(receiver);
+    }
+
+    /**
+     * ListView的item长按监听事件
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+        currentChatMsgEx = (ChatMsgEx) parent.getAdapter().getItem(position);
+        showPopup(view);
+        return true;
+    }
+
+    /**
+     * 长按弹出删除按钮
+     *
+     * @param view
+     */
+    private void showPopup(View view) {
+        // 加载pop显示的布局文件
+        View contentView = View.inflate(context,
+                R.layout.view_pop, null);
+        // 得到pop界面中的控件
+        tv_uninstall = (TextView) contentView.findViewById(R.id.tv_uninstall);
+
+        tv_uninstall.setOnClickListener(this);
+
+        pw = new PopupWindow(contentView,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+
+        // 设置背景：只有添加了背景后才能响应返回键的事件
+        pw.setBackgroundDrawable(new ColorDrawable());
+        // 把pop显示在某个控件的下面
+        // view 现在这个view的下面
+        // xoff 在水平方向的偏移量
+        // yoff 在垂直方向的偏移量
+        pw.showAsDropDown(view, 250, -view.getHeight());
+    }
+
+    /**
+     * 长按弹出删除按钮的点击事件
+     *
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+
+        pw.dismiss();
+        mChatMsgs.remove(currentChatMsgEx);
+        mChatMsgService.delete(context,currentChatMsgEx);
+        mAdapter.notifyDataSetChanged();
     }
 
 

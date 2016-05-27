@@ -232,7 +232,7 @@ public class ChatMsgService {
             // 未读消息
             chatMsg.setUnreadCount(countContactUnreadMsg(context, chatMsg.getContactid()));
 
-            Log.d(TAG,"---------------->unrReadMsg:"+chatMsg.getUnreadCount());
+            Log.d(TAG, "---------------->unrReadMsg:" + chatMsg.getUnreadCount());
             chatMsgExes.add(chatMsg);
         }
 
@@ -258,5 +258,11 @@ public class ChatMsgService {
         queryBuilder.where(ChatMsgDao.Properties.Status.eq(ChatMsg.STATUS_UNREAD));
 
         return (int) queryBuilder.count();
+    }
+
+    //删除聊天列表
+    public void delete(Context context, ChatMsgEx currentChatMsgEx) {
+
+        mChatMsgDao.delete(currentChatMsgEx);
     }
 }

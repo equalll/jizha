@@ -1,60 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              style="@style/layout">
+    style="@style/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-            <ListView
-                    android:id="@id/listView"
-                    android:layout_alignParentTop="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@null"
-                    android:dividerHeight="0dp"
-                    android:layout_above="@+id/layoutChart"
-                    android:transcriptMode="normal"
-                    >
+    <ListView
+        android:id="@id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layoutChart"
+        android:layout_alignParentTop="true"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:transcriptMode="normal">
 
-             </ListView>
+    </ListView>
 
 
-        <LinearLayout
-                android:id="@+id/layoutChart"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:background="@drawable/selector_list_item"
+    <LinearLayout
+        android:id="@+id/layoutChart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/selector_list_item"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="10dp">
 
-                >
+        <EditText
+            android:id="@id/etxtMsg"
+            style="@style/editText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:hint="@string/say_something_to"
+            android:imeActionLabel="@string/send"
+            android:imeOptions="actionSend"
+            android:inputType="text" />
 
-                <EditText
-                        android:id="@id/etxtMsg"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        style="@style/editText"
-                        android:layout_weight="9"
-                        android:inputType="text"
-                        android:hint="@string/say_something_to"
-                        android:imeOptions="actionSend"
-                        android:imeActionLabel="@string/send"
-                       />
+        <Button
+            android:id="@id/btnSend"
+            style="@style/smallGreyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:onClick="sendMsg"
+            android:text="@string/send" />
 
-                <Button
-                        android:id="@id/btnSend"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_weight="1"
-                        android:text="@string/send"
-                        android:onClick="sendMsg"
-                        style="@style/smallGreyButton"
-                       />
-
-        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

@@ -6,7 +6,7 @@
     <string name="contact">联系人</string>
     <string name="friend_new">新的好友</string>
     <string name="friend_add">添加好友</string>
-    <string name="friend_daniu">技术大牛</string>
+    <string name="friend_daniu">机器人</string>
     <string name="friend_ask_you_be">请求添加您为好友</string>
     <string name="friend_find_from_contact">从通讯录中添加</string>
     <string name="friend_find_from_qq">从QQ好友中添加</string>
@@ -18,7 +18,7 @@
     <string name="searching">正在搜索...</string>
     <string name="add">添加</string>
     <string name="more">更多</string>
-    <string name="sys_setting">系统设置</string>
+    <string name="sys_setting">应用分享</string>
     <string name="confirm">确定</string>
     <string name="from">来自</string>
     <string name="planet">外星球</string>
@@ -28,7 +28,7 @@
     <string name="hobby">爱好</string>
     <string name="msgtosomeone">私聊TA</string>
     <string name="profile">好友资料</string>
-    <string name="about_us">关于我们</string>
+    <string name="about_us">关于叽喳</string>
     <string name="login">登 陆</string>
     <string name="register">注 册</string>
     <string name="complete_register">完成注册</string>
@@ -81,5 +81,6 @@
 
     <string name="title_activity_register">注册用户</string>
     <string name="now_activity_register">正在注册...请稍后</string>
+    <string name="share">分享</string>
 
 </resources>

@@ -51,7 +51,7 @@
 
     </RelativeLayout>
 
-    <!--技术大牛-->
+    <!--机器人-->
     <RelativeLayout
         android:id="@+id/layoutNiu"
         android:layout_width="fill_parent"

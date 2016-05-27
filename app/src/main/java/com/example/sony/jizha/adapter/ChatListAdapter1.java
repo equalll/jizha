@@ -58,8 +58,8 @@ public class ChatListAdapter1 extends AbstractAdapter<ChatMsgEx> {
             txtTime.setText(dateFormat.format(data.getChattime()));
             txtMsg.setText(data.getChatMsg());
 
-            Log.d(TAG,"---------------->date:" + data
-            .toString());
+            Log.d(TAG, "---------------->date:" + data
+                    .toString());
             txtName.setText(data.getContact().getName());
 
             if (data.getUnreadCount() <= 0)

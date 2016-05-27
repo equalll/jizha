@@ -28,6 +28,8 @@ public class Constant {
     public static final String BD_CHANNELID = "bd_channelid";
     //百度apikey，开放平台注册时提供
     public static final String BD_API_KEY = "bd_api_key";
+    //图灵机器人apikey，开放平台注册时提供
+    public static final String TL_API_KEY = "tl_api_key";
 
     //意图为发送信息
     public static final String ACTION_MSG = "com.example.sony.jizha.ACTION_CHART";
@@ -50,7 +52,7 @@ public class Constant {
         //服务器地址
         public static final String URL_BASE = "http://192.168.43.151:8080/imserver/";
         //手机开始界面webView中显示的界面
-        public static final String URL_START = URL_BASE + "start_android.html";
+        public static final String URL_START = URL_BASE + "/imgs/jizha_start_android.jpg";
 
         //通过邮箱和密码登录
         public static final String URL_LOGIN = URL_BASE + "login";
@@ -72,5 +74,7 @@ public class Constant {
         //回复添加好友请求
         public static final String URL_FRIENDS_REQUEST_ANSWER = URL_BASE + "friend/request/answer";
         //public static final String URL_LOGIN_TOKEN=URL_BASE+"login/token";
+        //图灵机器人api
+        public static final String TL_API = "http://www.tuling123.com/openapi/api";
     }
 }

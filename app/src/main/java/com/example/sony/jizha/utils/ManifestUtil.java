@@ -19,7 +19,7 @@ import android.os.Bundle;
  */
 public class ManifestUtil {
 
-    // 获取 AndroidManifest.xml中百度推送API的值
+    // 获取 AndroidManifest.xml中API的值
     public static String getMetaValue(Context context, String metaKey) {
         Bundle metaData = null;
         String apiKey = null;
